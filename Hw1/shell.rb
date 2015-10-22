@@ -260,7 +260,7 @@ end
 if MODE == :console
   handle_client(nil)
 else
-  listen_sock = TCPServer.new('127.0.0.1','5566')
+  listen_sock = TCPServer.new('0.0.0.0','5566')
   while client_sock = listen_sock.accept
     if pid = fork
       # parent
