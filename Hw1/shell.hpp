@@ -43,6 +43,9 @@ void run_shell(int fd_in = 0,int fd_out = 1 ,int fd_err = 2){
     if(regex_search(str, regex("^\\s*exit"))){
       break;
     }
+    else if(regex_search(str, regex("/"))){
+      cout << "/ is forbidden here!" << endl;
+    }
     else if(regex_search(str,match,regex("^\\s*printenv(\\s*|$)"))){
       string name = string_strip(match.suffix());
       if(!name.empty()){

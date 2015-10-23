@@ -3,6 +3,7 @@
 require 'fileutils'
 require 'socket'
 
+PORT=ARGV[0].to_i
 MODE=:normal#:console
 #$DEBUG=true
 
@@ -260,7 +261,7 @@ end
 if MODE == :console
   handle_client(nil)
 else
-  listen_sock = TCPServer.new('0.0.0.0','5566')
+  listen_sock = TCPServer.new('0.0.0.0',PORT)
   while client_sock = listen_sock.accept
     if pid = fork
       # parent
