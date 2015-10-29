@@ -151,7 +151,7 @@ void run_shell(int fd_in = 0,int fd_out = 1 ,int fd_err = 2){
           string result = error_pipe.getline();
           if(!result.empty()){
             // error
-            printf("Unknown command [%s]\n",src_cmd_line.c_str());
+            printf("Unknown command: [%s].\n",src_cmd_line.c_str());
             // restore pipe
             if(first){
               pipe_pool.push_front(UnixPipe(false));

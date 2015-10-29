@@ -92,7 +92,7 @@ DOC
   children = []
   while true
     print '% '
-    line = gets
+    line = $stdin.gets
     if line =~ /^\s*exit/
       debug "Bye!"
       break
@@ -175,7 +175,7 @@ DOC
           error_pipe[1].close
           result = error_pipe[0].read(10)
           if result
-            puts "Unknown command [#{cmd}]"
+            puts "Unknown command: [#{cmd}]."
             if first
               $pipe_pool.unshift nil
             end
