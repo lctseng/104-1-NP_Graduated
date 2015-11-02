@@ -92,8 +92,16 @@ void run_shell(int fd_in = 0,int fd_out = 1 ,int fd_err = 2){
 
         // File name
         string filename;
-        if(regex_search(src_cmd_line,match,regex(">\\s*([^!| \t\n]+)"))){
-          filename = string_strip(match[1]);
+        const char* filemode;
+        if(regex_search(src_cmd_line,match,regex("(>+)\\s*([^!| \t\n]+)"))){
+          string mode_str = string_strip(match[1]);
+          if(mode_str == ">>"){
+            filemode = "a";
+          }
+          else{
+            filemode = "w";
+          }
+          filename = string_strip(match[2]);
           cmd_line = string_strip(match.prefix()) + " " + string(match.suffix());
         }
         else{
@@ -114,6 +122,7 @@ void run_shell(int fd_in = 0,int fd_out = 1 ,int fd_err = 2){
         debug("cmd:"+cmd);
         debug("arg:"+arg_line);
         debug("filename:"+filename);
+        debug("filemode:"+string(filemode));
         debug("suffix:"+suffix);
 #endif
         if(suffix=="|"){
@@ -185,7 +194,7 @@ void run_shell(int fd_in = 0,int fd_out = 1 ,int fd_err = 2){
           // stdout redirect
           if(!filename.empty()){
             // file
-            FILE* f = fopen(filename.c_str(), "w");
+            FILE* f = fopen(filename.c_str(), filemode);
             fd_reopen(FD_STDOUT,fileno(f));
           }
           else{
