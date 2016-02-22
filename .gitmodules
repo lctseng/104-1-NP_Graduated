@@ -1,0 +1,9 @@
+[submodule "Hw2"]
+	path = Hw2
+	url = ./Hw2
+[submodule "Hw3"]
+	path = Hw3
+	url = ./Hw3
+[submodule "Hw4"]
+	path = Hw4
+	url = ./Hw4
