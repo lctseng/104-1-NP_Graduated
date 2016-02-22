@@ -1,9 +1,9 @@
 [submodule "Hw2"]
 	path = Hw2
-	url = ./Hw2
+	url = git://github.com/lctseng/104-1-NP_Graduated-Hw2
 [submodule "Hw3"]
 	path = Hw3
-	url = ./Hw3
+	url = git://github.com/lctseng/104-1-NP_Graduated-Hw3
 [submodule "Hw4"]
 	path = Hw4
-	url = ./Hw4
+	url = git://github.com/lctseng/104-1-NP_Graduated-Hw4
